@@ -1,0 +1,3528 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Café Aroma</title>
+
+<style>
+
+/* =====================================================
+   CONFIGURACIÓN GENERAL
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#1d0e07;
+    color:white;
+}
+
+button{
+    font-family:inherit;
+}
+
+a{
+    text-decoration:none;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar{
+    position:fixed;
+    top:15px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:92%;
+    max-width:1200px;
+
+    height:75px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:10px 25px;
+
+    background:rgba(58,32,19,.95);
+
+    border:1px solid rgba(255,220,180,.25);
+
+    border-radius:25px;
+
+    z-index:1000;
+
+    box-shadow:0 10px 35px rgba(0,0,0,.4);
+
+    backdrop-filter:blur(10px);
+}
+
+
+/* LOGO */
+
+.logo{
+    color:#f5dfc1;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+
+    line-height:.8;
+
+    font-family:Georgia,serif;
+}
+
+.logo small{
+    font-size:12px;
+}
+
+.logo strong{
+    font-size:27px;
+}
+
+
+/* NAVEGACIÓN */
+
+.navbar nav{
+    display:flex;
+    gap:5px;
+}
+
+.navbar nav a{
+    color:#f6e1c5;
+
+    padding:12px 17px;
+
+    border-radius:20px;
+
+    transition:.3s;
+}
+
+.navbar nav a:hover{
+    background:#bd793b;
+    color:white;
+}
+
+
+/* BOTÓN PEDIDO */
+
+.boton-pedido{
+    border:none;
+
+    background:#efbd77;
+
+    color:#42200f;
+
+    font-weight:bold;
+
+    padding:13px 20px;
+
+    border-radius:25px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.boton-pedido:hover{
+    transform:scale(1.05);
+}
+
+
+/* =====================================================
+   SECCIONES
+===================================================== */
+
+.seccion{
+    min-height:100vh;
+
+    padding:130px 7% 80px;
+
+    scroll-margin-top:90px;
+}
+
+
+/* =====================================================
+   INICIO
+===================================================== */
+
+#inicio{
+    background:
+    radial-gradient(
+        circle at 80% 30%,
+        #704123,
+        #361b0e 40%,
+        #180b05 100%
+    );
+}
+
+.inicio-contenido{
+    max-width:1200px;
+
+    min-height:80vh;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    align-items:center;
+
+    gap:60px;
+}
+
+.subtitulo{
+    color:#dca467;
+
+    letter-spacing:4px;
+
+    font-size:14px;
+
+    margin-bottom:18px;
+}
+
+.inicio h1{
+    font-family:Georgia,serif;
+
+    font-size:clamp(65px,9vw,120px);
+
+    line-height:.78;
+
+    color:#f7e4c7;
+}
+
+.inicio h1 span{
+    color:#ca8c4d;
+}
+
+.descripcion{
+    max-width:500px;
+
+    margin:30px 0;
+
+    color:#dec6a9;
+
+    line-height:1.8;
+
+    font-size:17px;
+}
+
+.botones{
+    display:flex;
+    gap:15px;
+}
+
+.boton{
+    display:inline-block;
+
+    border:none;
+
+    padding:14px 25px;
+
+    border-radius:25px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.boton-principal{
+    background:#bd7432;
+    color:white;
+}
+
+.boton-principal:hover{
+    background:#d58a45;
+    transform:translateY(-3px);
+}
+
+.boton-secundario{
+    background:transparent;
+
+    color:#f4d8b6;
+
+    border:1px solid #c7945e;
+}
+
+.boton-secundario:hover{
+    background:#c7945e;
+    color:#291307;
+}
+
+.imagen-principal{
+    width:100%;
+
+    border-radius:30px;
+
+    box-shadow:0 25px 70px rgba(0,0,0,.55);
+}
+
+
+/* =====================================================
+   MENÚ PRINCIPAL
+===================================================== */
+
+#menu{
+    background:#f5e5ca;
+
+    color:#3b1c0c;
+}
+
+.titulo{
+    text-align:center;
+
+    margin-bottom:50px;
+}
+
+.titulo p{
+    color:#b66c31;
+
+    letter-spacing:3px;
+
+    font-size:13px;
+}
+
+.titulo h2{
+    font-family:Georgia,serif;
+
+    font-size:55px;
+
+    margin-top:10px;
+}
+
+
+/* CATEGORÍAS */
+
+.categorias{
+    max-width:1150px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:25px;
+}
+
+.categoria{
+    position:relative;
+
+    height:270px;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    box-shadow:0 10px 30px rgba(50,25,10,.25);
+
+    transition:.3s;
+}
+
+.categoria:hover{
+    transform:translateY(-8px);
+}
+
+.categoria img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.4s;
+}
+
+.categoria:hover img{
+    transform:scale(1.08);
+}
+
+.categoria::after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        transparent,
+        rgba(30,12,5,.9)
+    );
+}
+
+.categoria-texto{
+    position:absolute;
+
+    bottom:20px;
+    left:20px;
+
+    z-index:2;
+
+    color:white;
+}
+
+.categoria-texto h3{
+    font-family:Georgia,serif;
+
+    font-size:28px;
+
+    margin-bottom:5px;
+}
+
+.categoria-texto span{
+    color:#f1bd79;
+
+    font-size:14px;
+}
+
+
+/* =====================================================
+   PÁGINA DE PRODUCTOS
+===================================================== */
+
+.productos-seccion{
+    display:none;
+
+    background:#f5e5ca;
+
+    color:#3b1c0c;
+
+    min-height:100vh;
+
+    padding:130px 7% 100px;
+}
+
+.productos-seccion.activa{
+    display:block;
+}
+
+.productos-header{
+    max-width:1150px;
+
+    margin:0 auto 40px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+.productos-header h2{
+    font-family:Georgia,serif;
+
+    font-size:50px;
+}
+
+.volver{
+    background:#3b1c0c;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:25px;
+
+    cursor:pointer;
+}
+
+
+/* GRID PRODUCTOS */
+
+.productos-grid{
+    max-width:1150px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:25px;
+}
+
+.producto{
+    background:white;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 30px rgba(50,25,10,.15);
+
+    transition:.3s;
+}
+
+.producto:hover{
+    transform:translateY(-7px);
+}
+
+.producto-imagen{
+    width:100%;
+
+    height:210px;
+
+    object-fit:cover;
+}
+
+.producto-contenido{
+    padding:20px;
+}
+
+.producto-contenido h3{
+    font-family:Georgia,serif;
+
+    font-size:25px;
+
+    margin-bottom:8px;
+}
+
+.producto-contenido p{
+    color:#765642;
+
+    font-size:14px;
+
+    min-height:42px;
+
+    line-height:1.5;
+
+    margin-bottom:15px;
+}
+
+.producto-abajo{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+}
+
+.precio{
+    font-size:20px;
+
+    font-weight:bold;
+
+    color:#9b5727;
+}
+
+.agregar{
+    border:none;
+
+    background:#bd7432;
+
+    color:white;
+
+    padding:10px 15px;
+
+    border-radius:20px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.agregar:hover{
+    background:#d68b45;
+
+    transform:scale(1.05);
+}
+
+.agregar span{
+    font-size:20px;
+
+    margin-right:4px;
+}
+
+
+/* PRODUCTOS VACÍOS */
+
+.sin-productos{
+    max-width:700px;
+
+    margin:70px auto;
+
+    text-align:center;
+
+    padding:50px;
+
+    background:white;
+
+    border-radius:25px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
+
+.sin-productos h3{
+    font-family:Georgia,serif;
+
+    font-size:30px;
+
+    margin-bottom:15px;
+}
+
+.sin-productos p{
+    color:#765642;
+
+    line-height:1.6;
+}
+
+
+/* =====================================================
+   NOSOTROS
+===================================================== */
+
+#nosotros{
+    background:#29150b;
+}
+
+.nosotros{
+    max-width:1150px;
+
+    margin:auto;
+
+    min-height:75vh;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:70px;
+
+    align-items:center;
+}
+
+.nosotros img{
+    width:100%;
+
+    border-radius:25px;
+}
+
+.nosotros h2{
+    font-family:Georgia,serif;
+
+    color:#f4dfc2;
+
+    font-size:55px;
+
+    margin-bottom:25px;
+}
+
+.nosotros p{
+    color:#dbc2a6;
+
+    line-height:1.8;
+
+    margin-bottom:20px;
+}
+
+
+/* =====================================================
+   CONTACTO
+===================================================== */
+
+#contacto{
+    background:#f4e4c9;
+
+    color:#3b1c0c;
+}
+
+.contacto{
+    max-width:1100px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:60px;
+
+    align-items:center;
+}
+
+.contacto img{
+    width:100%;
+
+    border-radius:25px;
+}
+
+.contacto h2{
+    font-family:Georgia,serif;
+
+    font-size:55px;
+
+    margin-bottom:20px;
+}
+
+.contacto p{
+    color:#70503b;
+
+    line-height:1.7;
+
+    margin-bottom:25px;
+}
+
+.dato{
+    margin-bottom:20px;
+}
+
+.dato strong{
+    display:block;
+
+    margin-bottom:5px;
+}
+
+.dato a{
+    color:#ad632e;
+
+    font-size:18px;
+}
+
+
+/* =====================================================
+   CARRITO
+===================================================== */
+
+.carrito-boton{
+    position:fixed;
+
+    right:25px;
+
+    bottom:95px;
+
+    width:62px;
+
+    height:62px;
+
+    background:#efbd77;
+
+    color:#3b1c0c;
+
+    border:none;
+
+    border-radius:50%;
+
+    font-size:26px;
+
+    cursor:pointer;
+
+    z-index:1500;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.35);
+}
+
+.contador{
+    position:absolute;
+
+    top:-5px;
+
+    right:-5px;
+
+    width:24px;
+
+    height:24px;
+
+    background:#bd4e32;
+
+    color:white;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:12px;
+
+    font-weight:bold;
+}
+
+
+/* PANEL CARRITO */
+
+.carrito{
+    position:fixed;
+
+    top:0;
+
+    right:-420px;
+
+    width:400px;
+
+    max-width:90%;
+
+    height:100vh;
+
+    background:#fff5e4;
+
+    color:#3b1c0c;
+
+    z-index:3000;
+
+    box-shadow:-10px 0 40px rgba(0,0,0,.35);
+
+    transition:.4s;
+
+    padding:30px;
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+.carrito.abierto{
+    right:0;
+}
+
+.carrito-header{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+}
+
+.carrito-header h2{
+    font-family:Georgia,serif;
+
+    font-size:30px;
+}
+
+.cerrar-carrito{
+    border:none;
+
+    background:none;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+    color:#3b1c0c;
+}
+
+.carrito-items{
+    flex:1;
+
+    overflow-y:auto;
+}
+
+.item-carrito{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    padding:15px 0;
+
+    border-bottom:1px solid #dbc5a8;
+}
+
+.item-carrito h4{
+    margin-bottom:5px;
+}
+
+.item-carrito small{
+    color:#765642;
+}
+
+.cantidad{
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+}
+
+.cantidad button{
+    width:27px;
+
+    height:27px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#bd7432;
+
+    color:white;
+
+    cursor:pointer;
+}
+
+.total{
+    border-top:2px solid #cda879;
+
+    padding-top:20px;
+
+    margin-top:15px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:21px;
+
+    font-weight:bold;
+}
+
+.whatsapp-pedido{
+    width:100%;
+
+    border:none;
+
+    background:#25d366;
+
+    color:white;
+
+    padding:15px;
+
+    border-radius:25px;
+
+    font-weight:bold;
+
+    margin-top:15px;
+
+    cursor:pointer;
+
+    font-size:15px;
+}
+
+
+/* =====================================================
+   WHATSAPP
+===================================================== */
+
+.whatsapp{
+    position:fixed;
+
+    right:25px;
+
+    bottom:25px;
+
+    width:58px;
+
+    height:58px;
+
+    background:#25d366;
+
+    color:white;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:27px;
+
+    z-index:2000;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.4);
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    background:#170b06;
+
+    text-align:center;
+
+    padding:45px 20px;
+
+    color:#d8bea0;
+}
+
+.logo-footer{
+    font-family:Georgia,serif;
+
+    font-size:27px;
+
+    margin-bottom:10px;
+}
+
+.logo-footer strong{
+    color:#c98a4b;
+}
+
+.copyright{
+    margin-top:20px;
+
+    color:#876e5a;
+
+    font-size:13px;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:950px){
+
+    .navbar nav{
+        display:none;
+    }
+
+    .inicio-contenido,
+    .nosotros,
+    .contacto{
+        grid-template-columns:1fr;
+    }
+
+    .categorias{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .productos-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .navbar{
+        width:95%;
+
+        height:65px;
+
+        padding:8px 12px;
+    }
+
+    .logo strong{
+        font-size:19px;
+    }
+
+    .logo small{
+        font-size:9px;
+    }
+
+    .boton-pedido{
+        padding:10px 12px;
+
+        font-size:11px;
+    }
+
+    .seccion,
+    .productos-seccion{
+        padding:110px 20px 60px;
+    }
+
+    .inicio h1{
+        font-size:70px;
+    }
+
+    .categorias{
+        grid-template-columns:1fr;
+    }
+
+    .productos-grid{
+        grid-template-columns:1fr;
+    }
+
+    .titulo h2,
+    .nosotros h2,
+    .contacto h2,
+    .productos-header h2{
+        font-size:40px;
+    }
+
+    .botones{
+        flex-direction:column;
+    }
+
+    .boton{
+        text-align:center;
+    }
+
+    .productos-header{
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:15px;
+    }
+
+    .carrito-boton{
+        right:15px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     BARRA DE NAVEGACIÓN
+===================================================== -->
+
+<header class="navbar">
+
+    <a href="#inicio" class="logo">
+
+        <small>CAFÉ</small>
+
+        <strong>AROMA</strong>
+
+    </a>
+
+
+    <nav>
+
+        <a href="#inicio">
+            Inicio
+        </a>
+
+        <a href="#menu">
+            Menú
+        </a>
+
+        <a href="#nosotros">
+            Nosotros
+        </a>
+
+        <a href="#contacto">
+            Contacto
+        </a>
+
+    </nav>
+
+
+    <button
+        class="boton-pedido"
+        onclick="abrirCarrito()">
+
+        🛒 Carrito
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================================
+     INICIO
+===================================================== -->
+
+<section id="inicio" class="seccion inicio">
+
+    <div class="inicio-contenido">
+
+
+        <div>
+
+            <p class="subtitulo">
+                BIENVENIDO A
+            </p>
+
+
+            <h1>
+
+                CAFÉ
+
+                <br>
+
+                <span>AROMA</span>
+
+            </h1>
+
+
+            <p class="descripcion">
+
+                El sabor perfecto en cada taza.
+                Disfruta nuestros cafés, bebidas,
+                repostería y alimentos preparados
+                especialmente para ti.
+
+            </p>
+
+
+            <div class="botones">
+
+                <a
+                    href="#menu"
+                    class="boton boton-principal">
+
+                    Ver menú
+
+                </a>
+
+
+                <button
+                    onclick="abrirCarrito()"
+                    class="boton boton-secundario">
+
+                    🛒 Ver carrito
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div>
+
+            <img
+                class="imagen-principal"
+                src="img/img1.jpeg"
+                alt="Café Aroma">
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MENÚ PRINCIPAL / CATEGORÍAS
+===================================================== -->
+
+<section id="menu" class="seccion">
+
+    <div class="titulo">
+
+        <p>
+            DESCUBRE NUESTROS SABORES
+        </p>
+
+        <h2>
+            Nuestro Menú
+        </h2>
+
+    </div>
+
+
+    <div class="categorias">
+
+
+        <!-- CAFÉS -->
+
+        <div
+            class="categoria"
+            onclick="mostrarCategoria('cafes')">
+
+            <img
+                src="img/u-1509042239860-f550ce710b93.jpg"
+                alt="Cafés">
+
+            <div class="categoria-texto">
+
+                <h3>
+                    Cafés
+                </h3>
+
+                <span>
+                    Ver menú →
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- BEBIDAS FRÍAS -->
+
+        <div
+            class="categoria"
+            onclick="mostrarCategoria('frias')">
+
+            <img
+                src="img/u-1461023058943-07fcbe16d735.jpg"
+                alt="Bebidas frías">
+
+            <div class="categoria-texto">
+
+                <h3>
+                    Bebidas frías
+                </h3>
+
+                <span>
+                    Ver menú →
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- REPOSTERÍA -->
+
+        <div
+            class="categoria"
+            onclick="mostrarCategoria('reposteria')">
+
+            <img
+                src="img/u-1551024506-0bccd828d307.jpg"
+                alt="Repostería">
+
+            <div class="categoria-texto">
+
+                <h3>
+                    Repostería
+                </h3>
+
+                <span>
+                    Ver menú →
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ALIMENTOS -->
+
+        <div
+            class="categoria"
+            onclick="mostrarCategoria('alimentos')">
+
+            <img
+                src="img/u-1498837167922-ddd27525d352.jpg"
+                alt="Alimentos">
+
+            <div class="categoria-texto">
+
+                <h3>
+                    Alimentos
+                </h3>
+
+                <span>
+                    Ver menú →
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CAFÉS
+===================================================== -->
+
+<section
+    id="cafes"
+    class="productos-seccion">
+
+
+    <div class="productos-header">
+
+        <div>
+
+            <p class="subtitulo">
+                CAFÉ AROMA
+            </p>
+
+            <h2>
+                Cafés
+            </h2>
+
+        </div>
+
+
+        <button
+            class="volver"
+            onclick="volverMenu()">
+
+            ← Volver al menú
+
+        </button>
+
+    </div>
+
+
+    <div class="productos-grid">
+
+
+        <!-- ESPRESSO -->
+
+        <div class="producto">
+
+            <img
+                class="producto-imagen"
+                src="img/img2.jpeg"
+                alt="Espresso">
+
+            <div class="producto-contenido">
+
+                <h3>
+                    Espresso
+                </h3>
+
+                <p>
+                    Intenso y aromático,
+                    con sabor fuerte y concentrado.
+                </p>
+
+                <div class="producto-abajo">
+
+                    <span class="precio">
+                        $50 MXN
+                    </span>
+
+                    <button
+                        class="agregar"
+                        onclick="agregarCarrito('Espresso',50)">
+
+                        <span>+</span>
+                        Agregar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- AMERICANO -->
+
+        <div class="producto">
+
+            <img
+                class="producto-imagen"
+                src="img/img10.jpeg"
+                alt="Americano">
+
+            <div class="producto-contenido">
+
+                <h3>
+                    Americano
+                </h3>
+
+                <p>
+                    Suave y durador,
+                    ideal para el trabajo.
+                </p>
+
+                <div class="producto-abajo">
+
+                    <span class="precio">
+                        $55 MXN
+                    </span>
+
+                    <button
+                        class="agregar"
+                        onclick="agregarCarrito('Americano',55)">
+
+                        <span>+</span>
+                        Agregar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CAPPUCCINO -->
+
+        <div class="producto">
+
+            <img
+                class="producto-imagen"
+                src="img/img3.jpeg"
+                alt="Cappuccino">
+
+            <div class="producto-contenido">
+
+                <h3>
+                    Cappuccino
+                </h3>
+
+                <p>
+                    Café con leche
+                    espumado.
+                </p>
+
+                <div class="producto-abajo">
+
+                    <span class="precio">
+                        $55 MXN
+                    </span>
+
+                    <button
+                        class="agregar"
+                        onclick="agregarCarrito('Cappuccino',55)">
+
+                        <span>+</span>
+                        Agregar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- LATTE -->
+
+        <div class="producto">
+
+            <img
+                class="producto-imagen"
+                src="img/img11.jpeg"
+                alt="Latte">
+
+            <div class="producto-contenido">
+
+                <h3>
+                    Latte
+                </h3>
+
+                <p>
+                    Cremoso y suave,
+                    preparado con leche.
+                </p>
+
+                <div class="producto-abajo">
+
+                    <span class="precio">
+                        $60 MXN
+                    </span>
+
+                    <button
+                        class="agregar"
+                        onclick="agregarCarrito('Latte',60)">
+
+                        <span>+</span>
+                        Agregar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- MOKA -->
+
+        <div class="producto">
+
+            <img
+                class="producto-imagen"
+                src="img/img12.jpeg"
+                alt="Moka">
+
+            <div class="producto-contenido">
+
+                <h3>
+                    Moka
+                </h3>
+
+                <p>
+                    Café combinado
+                    con chocolate.
+                </p>
+
+                <div class="producto-abajo">
+
+                    <span class="precio">
+                        $60 MXN
+                    </span>
+
+                    <button
+                        class="agregar"
+                        onclick="agregarCarrito('Moka',60)">
+
+                        <span>+</span>
+                        Agregar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- TE VERDE -->
+
+        <div class="producto">
+
+            <img
+                class="producto-imagen"
+                src="img/img13.jpeg"
+                alt="Te Verde">
+
+            <div class="producto-contenido">
+
+                <h3>
+                    Te Verde
+                </h3>
+
+                <p>
+                    Suave, natural,
+                    aromatico y relajante.
+                </p>
+
+                <div class="producto-abajo">
+
+                    <span class="precio">
+                        $65 MXN
+                    </span>
+
+                    <button
+                        class="agregar"
+                        onclick="agregarCarrito('Te Verde',65)">
+
+                        <span>+</span>
+                        Agregar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CAFE DE OLLA -->
+
+        <div class="producto">
+
+            <img
+                class="producto-imagen"
+                src="img/img14.jpeg"
+                alt="Cafe de Olla">
+
+            <div class="producto-contenido">
+
+                <h3>
+                    Cafe de Olla
+                </h3>
+
+                <p>
+                    Tradicional con piloncillo,
+                    canela y clavo.
+                </p>
+
+                <div class="producto-abajo">
+
+                    <span class="precio">
+                        $55 MXN
+                    </span>
+
+                    <button
+                        class="agregar"
+                        onclick="agregarCarrito('Cafe de Olla',55)">
+
+                        <span>+</span>
+                        Agregar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CHOCOLATE CALIENTE -->
+
+        <div class="producto">
+
+            <img
+                class="producto-imagen"
+                src="img/img15.jpeg"
+                alt="Chocolate Caliente">
+
+            <div class="producto-contenido">
+
+                <h3>
+                    Chocolate Caliente
+                </h3>
+
+                <p>
+                    Cacao Oaxaqueño,
+                    espeso, aromatico y artesanal.
+                </p>
+
+                <div class="producto-abajo">
+
+                    <span class="precio">
+                        $60 MXN
+                    </span>
+
+                    <button
+                        class="agregar"
+                        onclick="agregarCarrito('Chocolate Caliente',60)">
+
+                        <span>+</span>
+                        Agregar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     BEBIDAS FRÍAS
+===================================================== -->
+
+<section
+    id="frias"
+    class="productos-seccion">
+
+
+    <div class="productos-header">
+
+        <div>
+
+            <p class="subtitulo">
+                CAFÉ AROMA
+            </p>
+
+            <h2>
+                Bebidas frías
+            </h2>
+
+        </div>
+
+
+        <button
+            class="volver"
+            onclick="volverMenu()">
+
+            ← Volver al menú
+
+        </button>
+
+    </div>
+
+
+    <div class="productos-grid">
+
+
+        <!-- CAFÉ FRÍO -->
+
+        <div class="producto">
+
+            <img
+                class="producto-imagen"
+                src="img/img16.jpeg"
+                alt="Café Frío">
+
+            <div class="producto-contenido">
+
+                <h3>
+                    Café Frío
+                </h3>
+
+                <p>
+                    Café frío refrescante
+                    para disfrutar en cualquier momento.
+                </p>
+
+                <div class="producto-abajo">
+
+                    <span class="precio">
+                        $50 MXN
+                    </span>
+
+                    <button
+                        class="agregar"
+                        onclick="agregarCarrito('Café Frío',50)">
+
+                        <span>+</span>
+                        Agregar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FRAPPÉ -->
+
+        <div class="producto">
+
+            <img
+                class="producto-imagen"
+                src="img/img17.jpeg"
+                alt="Frappé">
+
+            <div class="producto-contenido">
+
+                <h3>
+                    Frappé
+                </h3>
+
+                <p>
+                    Bebida fría preparada
+                    con café y hielo.
+                </p>
+
+                <div class="producto-abajo">
+
+                    <span class="precio">
+                        $40 MXN
+                    </span>
+
+                    <button
+                        class="agregar"
+                        onclick="agregarCarrito('Frappé',40)">
+
+                        <span>+</span>
+                        Agregar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- COLD BREW -->
+
+        <div class="producto">
+
+            <img
+                class="producto-imagen"
+                src="img/img18.jpeg"
+                alt="Cold Brew">
+
+            <div class="producto-contenido">
+
+                <h3>
+                    Cold Brew
+                </h3>
+
+                <p>
+                    Café reposado refrescante
+                    intenso y sin acidez.
+                </p>
+
+                <div class="producto-abajo">
+
+                    <span class="precio">
+                        $65 MXN
+                    </span>
+
+                    <button
+                        class="agregar"
+                        onclick="agregarCarrito('Cold Brew',65)">
+
+                        <span>+</span>
+                        Agregar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CHAI LATTE FRIO -->
+
+        <div class="producto">
+
+            <img
+                class="producto-imagen"
+                src="img/img19.jpeg"
+                alt="Chai Latte Frio">
+
+            <div class="producto-contenido">
+
+                <h3>
+                    Chai Latte Frio
+                </h3>
+
+                <p>
+                    Te especiado con leche,
+                    dulce y aromatico.
+                </p>
+
+                <div class="producto-abajo">
+
+                    <span class="precio">
+                        $75 MXN
+                    </span>
+
+                    <button
+                        class="agregar"
+                        onclick="agregarCarrito('Chai Latte Frio',75)">
+
+                        <span>+</span>
+                        Agregar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- FRAPPE MATCHA -->
+
+        <div class="producto">
+
+            <img
+                class="producto-imagen"
+                src="img/img20.jpeg"
+                alt="Frappe Matcha">
+
+            <div class="producto-contenido">
+
+                <h3>
+                    Frappe Matcha
+                </h3>
+
+                <p>
+                    Te verde con leche,
+                    energizante y suave.
+                </p>
+
+                <div class="producto-abajo">
+
+                    <span class="precio">
+                        $80 MXN
+                    </span>
+
+                    <button
+                        class="agregar"
+                        onclick="agregarCarrito('Frappe Matcha',80)">
+
+                        <span>+</span>
+                        Agregar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- FRAPPE OREO -->
+
+        <div class="producto">
+
+            <img
+                class="producto-imagen"
+                src="img/img21.jpeg"
+                alt="Frappe Oreo">
+
+            <div class="producto-contenido">
+
+                <h3>
+                    Frappe Oreo
+                </h3>
+
+                <p>
+                    Galleta oreo, leche
+                    y cafe, cremosito y dulce.
+                </p>
+
+                <div class="producto-abajo">
+
+                    <span class="precio">
+                        $70 MXN
+                    </span>
+
+                    <button
+                        class="agregar"
+                        onclick="agregarCarrito('Frappe Oreo',70)">
+
+                        <span>+</span>
+                        Agregar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- SODA ITALIANA -->
+
+        <div class="producto">
+
+            <img
+                class="producto-imagen"
+                src="img/img22.jpeg"
+                alt="Soda Italiana">
+
+            <div class="producto-contenido">
+
+                <h3>
+                    Soda Italiana
+                </h3>
+
+                <p>
+                    Agua mineral, pulpa natural
+                    y perlas explosivas.
+                </p>
+
+                <div class="producto-abajo">
+
+                    <span class="precio">
+                        $60 MXN
+                    </span>
+
+                    <button
+                        class="agregar"
+                        onclick="agregarCarrito('Soda Italiana',60)">
+
+                        <span>+</span>
+                        Agregar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- JUGO NATURAL DEL DIA -->
+
+        <div class="producto">
+
+            <img
+                class="producto-imagen"
+                src="img/img23.jpeg"
+                alt="Jugo Natural del Dia">
+
+            <div class="producto-contenido">
+
+                <h3>
+                    Jugo Natural del Dia
+                </h3>
+
+                <p>
+                    Fruta de temporada
+                    exprimida al momento.
+                </p>
+
+                <div class="producto-abajo">
+
+                    <span class="precio">
+                        $50 MXN
+                    </span>
+
+                    <button
+                        class="agregar"
+                        onclick="agregarCarrito('Jugo Natural del Dia',50)">
+
+                        <span>+</span>
+                        Agregar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     REPOSTERÍA
+===================================================== -->
+
+<section
+    id="reposteria"
+    class="productos-seccion">
+
+
+    <div class="productos-header">
+
+        <div>
+
+            <p class="subtitulo">
+                CAFÉ AROMA
+            </p>
+
+            <h2>
+                Repostería
+            </h2>
+
+        </div>
+
+
+        <button
+            class="volver"
+            onclick="volverMenu()">
+
+            ← Volver al menú
+
+        </button>
+
+    </div>
+
+
+    <div class="productos-grid">
+
+
+        <!-- PAN DULCE -->
+
+        <div class="producto">
+
+            <img
+                class="producto-imagen"
+                src="img/imgpan.jpeg"
+                alt="Pan Dulce">
+
+            <div class="producto-contenido">
+
+                <h3>
+                    Pan Dulce
+                </h3>
+
+                <p>
+                    Pan para acompañar
+                    tu café.
+                </p>
+
+                <div class="producto-abajo">
+
+                    <span class="precio">
+                        $30 MXN
+                    </span>
+
+                    <button
+                        class="agregar"
+                        onclick="agregarCarrito('Pan Dulce',50)">
+
+                        <span>+</span>
+                        Agregar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FLAN NAPOLITANO -->
+
+        <div class="producto">
+
+            <img
+                class="producto-imagen"
+                src="img/imgflan.jpeg"
+                alt="Flan Napolitano">
+
+            <div class="producto-contenido">
+
+                <h3>
+                    Flan Napolitano
+                </h3>
+
+                <p>
+                    Super cremoso,
+                    puro amor napolitano .
+                </p>
+
+                <div class="producto-abajo">
+
+                    <span class="precio">
+                        $40 MXN
+                    </span>
+
+                    <button
+                        class="agregar"
+                        onclick="agregarCarrito('Flan Napolitano',40)">
+
+                        <span>+</span>
+                        Agregar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ROL DE CANELA -->
+
+        <div class="producto">
+
+            <img
+                class="producto-imagen"
+                src="img/imgrol.jpeg"
+                alt="Rol de Canela">
+
+            <div class="producto-contenido">
+
+                <h3>
+                    Rol de Canela
+                </h3>
+
+                <p>
+                    Suavecito, con mucha canela
+                    y glaseado de vainilla.
+                </p>
+
+                <div class="producto-abajo">
+
+                    <span class="precio">
+                        $50 MXN
+                    </span>
+
+                    <button
+                        class="agregar"
+                        onclick="agregarCarrito('Rol de Canela',50)">
+
+                        <span>+</span>
+                        Agregar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PANQUE DE ZANAHORIA -->
+
+        <div class="producto">
+
+            <img
+                class="producto-imagen"
+                src="img/imgpanque.jpeg"
+                alt="Panque de Zanahoria">
+
+            <div class="producto-contenido">
+
+                <h3>
+                    Panque de Zanahoria
+                </h3>
+
+                <p>
+                    Esponjoso con zanahoria,
+                    nuez y toque de canela.
+                </p>
+
+                <div class="producto-abajo">
+
+                    <span class="precio">
+                        $45 MXN
+                    </span>
+
+                    <button
+                        class="agregar"
+                        onclick="agregarCarrito('Panque de Zanahoria',35)">
+
+                        <span>+</span>
+                        Agregar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- GALLETA DE CHISPAS -->
+
+        <div class="producto">
+
+            <img
+                class="producto-imagen"
+                src="img/imggalleta.jpeg"
+                alt="Galleta de Chispas">
+
+            <div class="producto-contenido">
+
+                <h3>
+                    Galleta de Chispas
+                </h3>
+
+                <p>
+                    Crujiente por fuera,
+                    suave por dentro.
+                </p>
+
+                <div class="producto-abajo">
+
+                    <span class="precio">
+                        $35 MXN
+                    </span>
+
+                    <button
+                        class="agregar"
+                        onclick="agregarCarrito('Galleta de Chispas',35)">
+
+                        <span>+</span>
+                        Agregar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CHEESECAKE DE FRUTOS ROJOS -->
+
+        <div class="producto">
+
+            <img
+                class="producto-imagen"
+                src="img/imgchees.jpeg"
+                alt="Cheescake de Frutos Rojos">
+
+            <div class="producto-contenido">
+
+                <h3>
+                    Cheescake de Frutos Rojos
+                </h3>
+
+                <p>
+                    Cremoso,  base de
+                    galleta y mermelada casera.
+                </p>
+
+                <div class="producto-abajo">
+
+                    <span class="precio">
+                        $45 MXN
+                    </span>
+
+                    <button
+                        class="agregar"
+                        onclick="agregarCarrito('Cheescake de Frutos Rojos',45)">
+
+                        <span>+</span>
+                        Agregar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CONCHA RELLENA -->
+
+        <div class="producto">
+
+            <img
+                class="producto-imagen"
+                src="img/imgconcha.jpeg"
+                alt="Concha Rellena">
+
+            <div class="producto-contenido">
+
+                <h3>
+                    Concha Rellena
+                </h3>
+
+                <p>
+                    Pan dulce tradicional con
+                    nata fresca de rancho.
+                </p>
+
+                <div class="producto-abajo">
+
+                    <span class="precio">
+                        $50 MXN
+                    </span>
+
+                    <button
+                        class="agregar"
+                        onclick="agregarCarrito('Concha Rellena',50)">
+
+                        <span>+</span>
+                        Agregar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- BROWNIE -->
+
+        <div class="producto">
+
+            <img
+                class="producto-imagen"
+                src="img/imgbrownie.jpeg"
+                alt="Brownie">
+
+            <div class="producto-contenido">
+
+                <h3>
+                    Brownie
+                </h3>
+
+                <p>
+                    Suave, intenso de chocolate
+                    amargo y nuez tostada.
+                </p>
+
+                <div class="producto-abajo">
+
+                    <span class="precio">
+                        $35 MXN
+                    </span>
+
+                    <button
+                        class="agregar"
+                        onclick="agregarCarrito('Brownie',35)">
+
+                        <span>+</span>
+                        Agregar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ALIMENTOS
+===================================================== -->
+
+<section
+    id="alimentos"
+    class="productos-seccion">
+
+
+    <div class="productos-header">
+
+        <div>
+
+            <p class="subtitulo">
+                CAFÉ AROMA
+            </p>
+
+            <h2>
+                Alimentos
+            </h2>
+
+        </div>
+
+
+        <button
+            class="volver"
+            onclick="volverMenu()">
+
+            ← Volver al menú
+
+        </button>
+
+    </div>
+
+
+    <div class="productos-grid">
+
+
+    <!-- CROISSANT -->
+
+    <div class="producto">
+
+        <img
+            class="producto-imagen"
+            src="img/imgcroisant.jpeg"
+            alt="Croissant">
+
+        <div class="producto-contenido">
+
+            <h3>
+                Croissant
+            </h3>
+
+            <p>
+                Pan con jamon y lechuga,
+                hojaldrado y doradito.
+            </p>
+
+            <div class="producto-abajo">
+
+                <span class="precio">
+                    $45 MXN
+                </span>
+
+                <button
+                    class="agregar"
+                    onclick="agregarCarrito('Croissant',45)">
+
+                    <span>+</span>
+                    Agregar
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- TOAST DE AGUACATE -->
+
+    <div class="producto">
+
+        <img
+            class="producto-imagen"
+            src="img/imgtoast.jpeg"
+            alt="Toast de Aguacate">
+
+        <div class="producto-contenido">
+
+            <h3>
+                Toast de Aguacate
+            </h3>
+
+            <p>
+                Pan de masa madre,
+                aguacate y huevo.
+            </p>
+
+            <div class="producto-abajo">
+
+                <span class="precio">
+                    $45 MXN
+                </span>
+
+                <button
+                    class="agregar"
+                    onclick="agregarCarrito('Toast de Aguacate',45)">
+
+                    <span>+</span>
+                    Agregar
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- BAGEL DE JAMON SERRANO -->
+
+    <div class="producto">
+
+        <img
+            class="producto-imagen"
+            src="img/imgbagel.jpeg"
+            alt="Bagel de Jamon Serrano">
+
+        <div class="producto-contenido">
+
+            <h3>
+                Bagel de Jamon Serrano
+            </h3>
+
+            <p>
+                Pan artesanal,
+                queso crema y jamon serrano.
+            </p>
+
+            <div class="producto-abajo">
+
+                <span class="precio">
+                    $80 MXN
+                </span>
+
+                <button
+                    class="agregar"
+                    onclick="agregarCarrito('Bagel de Jamon Serrano',80)">
+
+                    <span>+</span>
+                    Agregar
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CHILAQUILES -->
+
+    <div class="producto">
+
+        <img
+            class="producto-imagen"
+            src="img/imgchilaquiles.jpeg"
+            alt="Chilaquiles">
+
+        <div class="producto-contenido">
+
+            <h3>
+                Chilaquiles
+            </h3>
+
+            <p>
+                Totopos crujientes en salsa
+                de la casa con pollo, crema y queso.
+            </p>
+
+            <div class="producto-abajo">
+
+                <span class="precio">
+                    $80 MXN
+                </span>
+
+                <button
+                    class="agregar"
+                    onclick="agregarCarrito('Chilaquiles',80)">
+
+                    <span>+</span>
+                    Agregar
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- BOWL DE YOGURT -->
+
+    <div class="producto">
+
+        <img
+            class="producto-imagen"
+            src="img/imgbowl.jpeg"
+            alt="Bowl de Yogurt">
+
+        <div class="producto-contenido">
+
+            <h3>
+                Bowl de Yogurt
+            </h3>
+
+            <p>
+                Yogurt griego con frutas, 
+                granola y miel de abeja.
+            </p>
+
+            <div class="producto-abajo">
+
+                <span class="precio">
+                    $50 MXN
+                </span>
+
+                <button
+                    class="agregar"
+                    onclick="agregarCarrito('Bowl de Yogurt',50)">
+
+                    <span>+</span>
+                    Agregar
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ENSALADA CESAR -->
+
+    <div class="producto">
+
+        <img
+            class="producto-imagen"
+            src="img/imgensalada.jpeg"
+            alt="Ensalada Cesar">
+
+        <div class="producto-contenido">
+
+            <h3>
+                Ensalada Cesar
+            </h3>
+
+            <p>
+                La Cesar de siempre, lechuga crujiente,
+                pollo, parmesano y nuestro aderezo cremoso de la casa.
+            </p>
+
+            <div class="producto-abajo">
+
+                <span class="precio">
+                    $100 MXN
+                </span>
+
+                <button
+                    class="agregar"
+                    onclick="agregarCarrito('Ensalada Cesar',100)">
+
+                    <span>+</span>
+                    Agregar
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ENTOMATADAS -->
+
+    <div class="producto">
+
+        <img
+            class="producto-imagen"
+            src="img/imgentomatadas.jpeg"
+            alt="Entomatadas">
+
+        <div class="producto-contenido">
+
+            <h3>
+                Entomatadas
+            </h3>
+
+            <p>
+                Calientitas en salsa de tomate de la casa,
+                rellenas de pollo con queso y crema.
+            </p>
+
+            <div class="producto-abajo">
+
+                <span class="precio">
+                    $80 MXN
+                </span>
+
+                <button
+                    class="agregar"
+                    onclick="agregarCarrito('Entomatadas',80)">
+
+                    <span>+</span>
+                    Agregar
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CLUB SANDWICH -->
+
+    <div class="producto">
+
+        <img
+            class="producto-imagen"
+            src="img/imgsandwich.jpeg"
+            alt="Club Sandwich">
+
+        <div class="producto-contenido">
+
+            <h3>
+                Club Sandwich
+            </h3>
+
+            <p>
+                Pan con jamon y lechuga,
+                hojaldrado y doradito.
+            </p>
+
+            <div class="producto-abajo">
+
+                <span class="precio">
+                    $90 MXN
+                </span>
+
+                <button
+                    class="agregar"
+                    onclick="agregarCarrito('Club Sandwich',90)">
+
+                    <span>+</span>
+                    Agregar
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+    
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     NOSOTROS
+===================================================== -->
+
+<section id="nosotros" class="seccion">
+
+
+    <div class="nosotros">
+
+
+        <div>
+
+            <img
+                src="img/img9.jpeg"
+                alt="Café Aroma">
+
+        </div>
+
+
+        <div>
+
+            <p class="subtitulo">
+                CONÓCENOS
+            </p>
+
+
+            <h2>
+                Sobre Café Aroma
+            </h2>
+
+
+            <p>
+
+                En Café Aroma nos gusta crear
+                un espacio agradable para disfrutar
+                de un buen café y compartir momentos
+                especiales.
+
+            </p>
+
+
+            <p>
+
+                Seleccionamos nuestros ingredientes
+                y preparamos cada producto buscando
+                ofrecer una experiencia deliciosa
+                en cada visita.
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTACTO
+===================================================== -->
+
+<section id="contacto" class="seccion">
+
+
+    <div class="titulo">
+
+        <p>
+            ESTAMOS PARA TI
+        </p>
+
+        <h2>
+            Contacto
+        </h2>
+
+    </div>
+
+
+    <div class="contacto">
+
+
+        <div>
+
+            <img
+                src="img/img8.jpeg"
+                alt="Café Aroma">
+
+        </div>
+
+
+        <div>
+
+            <h2>
+                ¡Visítanos!
+            </h2>
+
+
+            <p>
+
+                ¿Tienes alguna pregunta o quieres
+                realizar un pedido?
+
+                Comunícate con nosotros.
+
+            </p>
+
+
+            <div class="dato">
+
+                <strong>
+                    📞 Teléfono
+                </strong>
+
+                <a href="tel:9711702708">
+
+                    971 170 2708
+
+                </a>
+
+            </div>
+
+
+            <div class="dato">
+
+                <strong>
+                    💬 WhatsApp
+                </strong>
+
+                <a
+                    href="https://wa.me/529711702708"
+                    target="_blank">
+
+                    Enviar mensaje
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     BOTÓN DEL CARRITO
+===================================================== -->
+
+<button
+    class="carrito-boton"
+    onclick="abrirCarrito()">
+
+    🛒
+
+    <span
+        id="contador"
+        class="contador">
+
+        0
+
+    </span>
+
+</button>
+
+
+
+<!-- =====================================================
+     WHATSAPP
+===================================================== -->
+
+<a
+    href="https://wa.me/529711702708"
+    target="_blank"
+    class="whatsapp">
+
+    ☎
+
+</a>
+
+
+
+<!-- =====================================================
+     CARRITO
+===================================================== -->
+
+<div
+    id="carrito"
+    class="carrito">
+
+
+    <div class="carrito-header">
+
+        <h2>
+            Mi carrito 🛒
+        </h2>
+
+        <button
+            class="cerrar-carrito"
+            onclick="cerrarCarrito()">
+
+            ×
+
+        </button>
+
+    </div>
+
+
+    <div
+        id="carritoItems"
+        class="carrito-items">
+
+        <p style="color:#765642; text-align:center; margin-top:40px;">
+
+            Tu carrito está vacío.
+
+        </p>
+
+    </div>
+
+
+    <div class="total">
+
+        <span>
+            Total:
+        </span>
+
+        <span id="total">
+            $0 MXN
+        </span>
+
+    </div>
+
+
+    <button
+        class="whatsapp-pedido"
+        onclick="enviarPedidoWhatsApp()">
+
+        💬 Pedir por WhatsApp
+
+    </button>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="logo-footer">
+
+        CAFÉ
+        <strong>AROMA</strong>
+
+    </div>
+
+
+    <p>
+        El sabor perfecto en cada taza.
+    </p>
+
+
+    <p class="copyright">
+
+        ©️ 2026 Café Aroma.
+        Todos los derechos reservados.
+
+    </p>
+
+</footer>
+
+
+
+<script>
+
+/* =====================================================
+   CARRITO
+===================================================== */
+
+let carrito = [];
+
+
+/* MOSTRAR CATEGORÍA */
+
+function mostrarCategoria(categoria){
+
+    // Ocultar todas las secciones de productos
+
+    document
+        .querySelectorAll(".productos-seccion")
+        .forEach(function(seccion){
+
+            seccion.classList.remove("activa");
+
+        });
+
+
+    // Ocultar menú principal
+
+    document
+        .getElementById("menu")
+        .style.display="none";
+
+
+    // Mostrar categoría seleccionada
+
+    document
+        .getElementById(categoria)
+        .classList.add("activa");
+
+
+    // Mostrar directamente el menú seleccionado
+    document.getElementById(categoria).scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+}
+
+
+/* VOLVER AL MENÚ */
+
+function volverMenu(){
+
+    document
+        .querySelectorAll(".productos-seccion")
+        .forEach(function(seccion){
+
+            seccion.classList.remove("activa");
+
+        });
+
+
+    document
+        .getElementById("menu")
+        .style.display="block";
+
+
+    document
+        .getElementById("menu")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+/* AGREGAR PRODUCTO */
+
+function agregarCarrito(nombre,precio){
+
+    // Si el precio es 0 no se agrega
+
+    if(precio === 0){
+
+        alert(
+            "El precio de este producto todavía no está definido."
+        );
+
+        return;
+
+    }
+
+
+    // Buscar producto
+
+    const productoExistente =
+        carrito.find(
+            item => item.nombre === nombre
+        );
+
+
+    if(productoExistente){
+
+        productoExistente.cantidad++;
+
+    }else{
+
+        carrito.push({
+
+            nombre:nombre,
+
+            precio:precio,
+
+            cantidad:1
+
+        });
+
+    }
+
+
+    actualizarCarrito();
+
+
+    // Animación / aviso
+
+    alert(
+        nombre +
+        " fue agregado al carrito."
+    );
+
+}
+
+
+/* ACTUALIZAR CARRITO */
+
+function actualizarCarrito(){
+
+    const contenedor =
+        document.getElementById("carritoItems");
+
+    const contador =
+        document.getElementById("contador");
+
+    const totalElemento =
+        document.getElementById("total");
+
+
+    contenedor.innerHTML="";
+
+
+    if(carrito.length === 0){
+
+        contenedor.innerHTML=`
+
+            <p style="
+                color:#765642;
+                text-align:center;
+                margin-top:40px;
+            ">
+
+                Tu carrito está vacío.
+
+            </p>
+
+        `;
+
+        contador.textContent="0";
+
+        totalElemento.textContent="$0 MXN";
+
+        return;
+
+    }
+
+
+    let total=0;
+
+    let cantidadTotal=0;
+
+
+    carrito.forEach(function(item,index){
+
+        total +=
+            item.precio *
+            item.cantidad;
+
+        cantidadTotal +=
+            item.cantidad;
+
+
+        const div =
+            document.createElement("div");
+
+        div.className="item-carrito";
+
+
+        div.innerHTML=`
+
+            <div>
+
+                <h4>
+                    ${item.nombre}
+                </h4>
+
+                <small>
+                    $${item.precio} MXN c/u
+                </small>
+
+            </div>
+
+
+            <div class="cantidad">
+
+                <button
+                    onclick="disminuir(${index})">
+
+                    −
+
+                </button>
+
+
+                <strong>
+                    ${item.cantidad}
+                </strong>
+
+
+                <button
+                    onclick="aumentar(${index})">
+
+                    +
+
+                </button>
+
+            </div>
+
+        `;
+
+
+        contenedor.appendChild(div);
+
+    });
+
+
+    contador.textContent =
+        cantidadTotal;
+
+
+    totalElemento.textContent =
+        "$" + total + " MXN";
+
+}
+
+
+/* AUMENTAR */
+
+function aumentar(index){
+
+    carrito[index].cantidad++;
+
+    actualizarCarrito();
+
+}
+
+
+/* DISMINUIR */
+
+function disminuir(index){
+
+    carrito[index].cantidad--;
+
+
+    if(carrito[index].cantidad <= 0){
+
+        carrito.splice(index,1);
+
+    }
+
+
+    actualizarCarrito();
+
+}
+
+
+/* ABRIR CARRITO */
+
+function abrirCarrito(){
+
+    document
+        .getElementById("carrito")
+        .classList.add("abierto");
+
+}
+
+
+/* CERRAR CARRITO */
+
+function cerrarCarrito(){
+
+    document
+        .getElementById("carrito")
+        .classList.remove("abierto");
+
+}
+
+
+/* =====================================================
+   ENVIAR PEDIDO POR WHATSAPP
+===================================================== */
+
+function enviarPedidoWhatsApp(){
+
+    if(carrito.length === 0){
+
+        alert(
+            "Agrega productos al carrito primero."
+        );
+
+        return;
+
+    }
+
+
+    let mensaje =
+        "Hola, quiero hacer un pedido en Café Aroma.%0A%0A";
+
+
+    let total=0;
+
+
+    carrito.forEach(function(item){
+
+        const subtotal =
+            item.precio *
+            item.cantidad;
+
+
+        total += subtotal;
+
+
+        mensaje +=
+            "☕ " +
+            item.nombre +
+            " x" +
+            item.cantidad +
+            " - $" +
+            subtotal +
+            " MXN%0A";
+
+    });
+
+
+    mensaje +=
+        "%0A💰 Total: $" +
+        total +
+        " MXN";
+
+
+    const telefono =
+        "529711702708";
+
+
+    const url =
+        "https://wa.me/" +
+        telefono +
+        "?text=" +
+        mensaje;
+
+
+    window.open(
+        url,
+        "_blank"
+    );
+
+}
+
+
+/* =====================================================
+   ACTUALIZAR CARRITO AL CARGAR
+===================================================== */
+
+actualizarCarrito();
+
+
+</script>
+
+
+</body>
+</html>
