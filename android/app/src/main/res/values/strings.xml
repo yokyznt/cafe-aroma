@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Café Aroma</string>
+    <string name="title_activity_main">Café Aroma</string>
+    <string name="package_name">mx.cafearoma.app</string>
+    <string name="custom_url_scheme">mx.cafearoma.app</string>
+</resources>
